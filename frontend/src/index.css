@@ -275,6 +275,165 @@ body {
   }
 }
 
+/* Cyber Laser Scanner Beam across the top of scanner bar */
+.scanner-container {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-1);
+  border: 1px solid var(--border-cyan);
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 0 35px rgba(0, 240, 255, 0.12), inset 0 0 15px rgba(0, 240, 255, 0.03);
+  backdrop-filter: blur(16px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scanner-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-cyan), transparent);
+  box-shadow: 0 0 12px var(--primary-cyan), 0 0 20px var(--primary-cyan);
+  animation: cyberLaserScan 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes cyberLaserScan {
+  0% {
+    left: -50%;
+  }
+  50%, 100% {
+    left: 150%;
+  }
+}
+
+/* Terminal Cursor Blinker */
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: var(--primary-cyan);
+  margin-left: 2px;
+  animation: terminalBlink 1s infinite step-start;
+  vertical-align: middle;
+  box-shadow: 0 0 8px var(--primary-cyan);
+}
+
+@keyframes terminalBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Radar Sweep Pulse */
+.radar-sweep-icon {
+  animation: radarSweepRotate 6s linear infinite;
+}
+
+@keyframes radarSweepRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Neon Text Glow & Shimmer */
+.neon-glow-text {
+  color: var(--primary-cyan);
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.6), 0 0 24px rgba(0, 240, 255, 0.3);
+  animation: neonTextShimmer 4s ease-in-out infinite alternate;
+}
+
+@keyframes neonTextShimmer {
+  0% {
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.2);
+  }
+  100% {
+    text-shadow: 0 0 16px rgba(0, 240, 255, 0.8), 0 0 35px rgba(0, 240, 255, 0.4);
+  }
+}
+
+/* Classic Cyber Bento Card Interaction */
+.hero-bento-card {
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(12px);
+}
+
+.hero-bento-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-cyan);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.18);
+}
+
+.hero-bento-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.4), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hero-bento-card:hover::after {
+  opacity: 1;
+}
+
+/* Staggered Entrance Animations */
+.animate-fade-in-up {
+  animation: heroFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
+@keyframes heroFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Target Preset Buttons with Cyber Hover */
+.target-preset-btn {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  border-radius: 5px;
+  padding: 3px 10px;
+  font-size: 0.74rem;
+  font-family: var(--font-tactical);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.18s ease;
+}
+
+.target-preset-btn:hover {
+  border-color: var(--primary-cyan);
+  color: #FFFFFF;
+  background: rgba(0, 240, 255, 0.08);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+  transform: translateY(-1px);
+}
+
 /* Typography elements */
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
@@ -581,3 +740,183 @@ code, pre {
     box-shadow: none !important;
   }
 }
+
+/* ==================================================== */
+/* CLASSIC CYBER & STITCH HERO ANIMATIONS                */
+/* ==================================================== */
+
+/* Scanner Container with Laser Beam Scan Effect */
+.scanner-container {
+  width: 100%;
+  margin: 0 auto;
+  background: var(--surface-1);
+  border: 1px solid var(--border-cyan);
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.12), inset 0 0 15px rgba(0, 240, 255, 0.03);
+  backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scanner-container:focus-within {
+  border-color: var(--primary-cyan);
+  box-shadow: 0 0 40px rgba(0, 240, 255, 0.22), inset 0 0 20px rgba(0, 240, 255, 0.06);
+}
+
+.scanner-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.04), rgba(0, 240, 255, 0.22), rgba(0, 240, 255, 0.04), transparent);
+  pointer-events: none;
+  animation: cyberLaserScan 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes cyberLaserScan {
+  0% { left: -60%; }
+  35%, 100% { left: 160%; }
+}
+
+/* Classic Blinking Terminal Cursor */
+.terminal-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 15px;
+  background-color: var(--primary-cyan);
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: terminalBlink 1.05s step-end infinite;
+  box-shadow: 0 0 8px var(--primary-cyan);
+}
+
+@keyframes terminalBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Pulsing Cyber Dot */
+.cyber-pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--primary-cyan);
+  box-shadow: 0 0 8px var(--primary-cyan);
+  display: inline-block;
+  animation: cyberPillPulse 2s infinite ease-in-out;
+}
+
+@keyframes cyberPillPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.75); }
+}
+
+/* Radar Sweep Animation */
+.radar-sweep-icon {
+  animation: radarSweepRotate 3.5s linear infinite;
+}
+
+@keyframes radarSweepRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Neon Text Shimmer Effect */
+.neon-glow-text {
+  color: var(--primary-cyan);
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.65), 0 0 26px rgba(0, 240, 255, 0.25);
+  animation: neonTextShimmer 4s ease-in-out infinite alternate;
+}
+
+@keyframes neonTextShimmer {
+  0% {
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.5), 0 0 16px rgba(0, 240, 255, 0.2);
+  }
+  100% {
+    text-shadow: 0 0 18px rgba(0, 240, 255, 0.9), 0 0 34px rgba(0, 240, 255, 0.45);
+  }
+}
+
+/* Bento Feature Cards with Stitch Hover & Top Accent Line */
+.hero-bento-card {
+  position: relative;
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: all 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.hero-bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0), transparent);
+  transition: all 0.3s ease;
+}
+
+.hero-bento-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 240, 255, 0.38);
+  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.5), 0 0 18px rgba(0, 240, 255, 0.12);
+}
+
+.hero-bento-card:hover::before {
+  background: linear-gradient(90deg, transparent, var(--primary-cyan), transparent);
+}
+
+/* Target Preset Buttons */
+.target-preset-btn {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  border-radius: 4px;
+  padding: 3px 9px;
+  font-size: 0.72rem;
+  font-family: var(--font-tactical);
+  cursor: pointer;
+  transition: all 180ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.target-preset-btn:hover {
+  border-color: var(--primary-cyan);
+  color: var(--text-primary);
+  background: rgba(0, 240, 255, 0.08);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 240, 255, 0.15);
+}
+
+/* Staggered Entrance Animations */
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

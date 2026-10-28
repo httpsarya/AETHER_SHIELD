@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Shield, Sparkles, Radar, Lock, CheckCircle2, ArrowRight, Download, FileCode, Check, RefreshCw } from 'lucide-react';
+import { Shield, Sparkles, Radar, CheckCircle2, Download, FileCode, RefreshCw } from 'lucide-react';
 
 interface HeroProps {
   onScan: (url: string, followRedirects: boolean) => void;
@@ -10,7 +10,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSarif, onQuickExportJson }) => {
   const [url, setUrl] = useState('https://api.sentinel-defense.cloud/v2/telemetry');
-  const [followRedirects, setFollowRedirects] = useState(true);
+  const [followRedirects] = useState(true);
   const [inputError, setInputError] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -31,64 +31,78 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
   };
 
   return (
-    <section className="circuit-overlay" style={{ paddingTop: '20px', paddingBottom: '28px', borderBottom: '1px solid var(--border-subtle)' }}>
+    <section 
+      className="circuit-overlay" 
+      style={{ 
+        paddingTop: 'clamp(28px, 4.5vh, 52px)', 
+        paddingBottom: 'clamp(32px, 5vh, 60px)', 
+        borderBottom: '1px solid var(--border-subtle)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center'
+      }}
+    >
       <div className="container">
-        {/* Top Eyebrow */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
+        {/* Top Eyebrow Badge */}
+        <div className="animate-fade-in-up" style={{ display: 'flex', justifyContent: 'center', marginBottom: '14px' }}>
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
-            gap: '6px',
-            padding: '3px 12px',
+            gap: '8px',
+            padding: '4px 14px',
             borderRadius: '999px',
-            background: 'rgba(0, 240, 255, 0.12)',
+            background: 'rgba(0, 240, 255, 0.08)',
             border: '1px solid var(--border-cyan)',
             color: 'var(--primary-cyan)',
-            fontSize: '0.72rem',
+            fontSize: '0.74rem',
             fontFamily: 'var(--font-tactical)',
             textTransform: 'uppercase',
-            letterSpacing: '0.08em'
+            letterSpacing: '0.08em',
+            boxShadow: '0 0 16px rgba(0, 240, 255, 0.12)'
           }}>
             <Sparkles size={13} color="var(--primary-cyan)" />
             <span>AETHER_SHIELD // SEC-OPS HTTP SECURITY HEADER AUDITOR</span>
+            <span className="cyber-pill-dot" />
           </div>
         </div>
 
         {/* Hero Title & Subtitle */}
-        <div style={{ textAlign: 'center', maxWidth: '1100px', margin: '0 auto 18px auto' }}>
+        <div className="animate-fade-in-up delay-100" style={{ textAlign: 'center', maxWidth: '1100px', margin: '0 auto 24px auto' }}>
           <h1 style={{
-            fontSize: 'clamp(1.75rem, 1.35rem + 1.4vw, 2.6rem)',
+            fontSize: 'clamp(2.1rem, 1.7rem + 1.8vw, 3.1rem)',
             fontWeight: 700,
-            lineHeight: 1.25,
-            marginBottom: '10px',
-            letterSpacing: '-0.02em',
+            lineHeight: 1.22,
+            marginBottom: '12px',
+            letterSpacing: '-0.025em',
             textWrap: 'balance'
           }}>
             Deterministic HTTP Security <br />
-            <span style={{ color: 'var(--primary-cyan)', textShadow: 'var(--glow-cyan)' }}>Header Inspection</span> &amp; Remediation
+            <span className="neon-glow-text">Header Inspection</span> &amp; Remediation
           </h1>
-          <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: 1.55, maxWidth: '820px', margin: '0 auto' }}>
+          <p style={{ 
+            fontSize: 'clamp(0.92rem, 0.85rem + 0.25vw, 1.05rem)', 
+            color: 'var(--text-secondary)', 
+            lineHeight: 1.55, 
+            maxWidth: '820px', 
+            margin: '0 auto' 
+          }}>
             Deterministic 0–100 rubric compliance, SSRF-protected deep inspection, and instant copy-paste hardened server configurations.
           </p>
         </div>
 
         {/* ==================================================== */}
-        {/* STITCH TOP CYBER SCANNER BAR                          */}
+        {/* STITCH TOP CYBER SCANNER BAR (With Laser Scan Anim)   */}
         {/* ==================================================== */}
-        <div style={{
-          width: '100%',
-          margin: '0 auto',
-          background: 'var(--surface-1)',
-          border: inputError ? '1px solid var(--danger-rose)' : '1px solid var(--border-cyan)',
-          borderRadius: '12px',
-          padding: '16px 20px',
-          boxShadow: '0 0 30px rgba(0, 240, 255, 0.12)',
-          backdropFilter: 'blur(16px)'
-        }}>
+        <div 
+          className="scanner-container animate-fade-in-up delay-200"
+          style={inputError ? { borderColor: 'var(--danger-rose)', boxShadow: 'var(--glow-red)' } : undefined}
+        >
           <form onSubmit={handleSubmit}>
             <div className="scanner-form-row">
-              {/* Terminal Prefix */}
-              <span style={{
+              {/* Terminal Prefix with Blinking Cursor */}
+              <div style={{
+                display: 'inline-flex',
+                alignItems: 'center',
                 fontFamily: 'var(--font-tactical)',
                 fontSize: '0.88rem',
                 color: 'var(--primary-cyan)',
@@ -97,8 +111,9 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
                 userSelect: 'none',
                 whiteSpace: 'nowrap'
               }}>
-                target://
-              </span>
+                <span>target://</span>
+                <span className="terminal-cursor" />
+              </div>
 
               {/* URL Input */}
               <input
@@ -113,10 +128,10 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
                   border: 'none',
                   color: 'var(--text-primary)',
                   fontFamily: 'var(--font-tactical)',
-                  fontSize: '0.92rem',
+                  fontSize: '0.94rem',
                   outline: 'none',
-                  height: '40px',
-                  padding: '0 6px',
+                  height: '42px',
+                  padding: '0 8px',
                   minWidth: 0
                 }}
               />
@@ -127,10 +142,10 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
                 disabled={isLoading}
                 className="btn-primary"
                 style={{
-                  height: '40px',
-                  padding: '0 22px',
+                  height: '42px',
+                  padding: '0 24px',
                   borderRadius: '6px',
-                  fontSize: '0.82rem',
+                  fontSize: '0.84rem',
                   whiteSpace: 'nowrap',
                   flexShrink: 0
                 }}
@@ -142,7 +157,7 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
                   </>
                 ) : (
                   <>
-                    <Radar size={15} />
+                    <Radar size={15} className="radar-sweep-icon" />
                     <span>ANALYZE HEADERS</span>
                   </>
                 )}
@@ -152,15 +167,15 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
 
           {/* Validation Error Message */}
           {inputError && (
-            <div style={{ color: 'var(--danger-rose)', fontSize: '0.78rem', fontFamily: 'var(--font-tactical)', marginTop: '6px', paddingLeft: '4px' }}>
+            <div style={{ color: 'var(--danger-rose)', fontSize: '0.78rem', fontFamily: 'var(--font-tactical)', marginTop: '8px', paddingLeft: '4px' }}>
               {inputError}
             </div>
           )}
 
           {/* Presets and Quick Export Bar (From Stitch) */}
           <div style={{
-            marginTop: '10px',
-            paddingTop: '8px',
+            marginTop: '12px',
+            paddingTop: '10px',
             borderTop: '1px solid var(--border-subtle)',
             display: 'flex',
             alignItems: 'center',
@@ -169,123 +184,59 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
             gap: '8px'
           }}>
             {/* Presets */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
-              <span style={{ fontSize: '0.7rem', fontFamily: 'var(--font-tactical)', color: 'var(--text-muted)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+              <span style={{ fontSize: '0.7rem', fontFamily: 'var(--font-tactical)', color: 'var(--text-muted)', letterSpacing: '0.04em' }}>
                 TARGET PRESETS:
               </span>
               <button
                 type="button"
+                className="target-preset-btn"
                 onClick={() => handlePreset('https://github.com')}
-                style={{
-                  background: 'var(--surface-card)',
-                  border: '1px solid var(--border-subtle)',
-                  color: 'var(--text-secondary)',
-                  borderRadius: '4px',
-                  padding: '2px 8px',
-                  fontSize: '0.72rem',
-                  fontFamily: 'var(--font-tactical)',
-                  cursor: 'pointer',
-                  transition: 'all 150ms ease'
-                }}
               >
                 github.com <span style={{ color: 'var(--secondary-emerald)', fontWeight: 700 }}>(A+)</span>
               </button>
               <button
                 type="button"
+                className="target-preset-btn"
                 onClick={() => handlePreset('https://cloudflare.com')}
-                style={{
-                  background: 'var(--surface-card)',
-                  border: '1px solid var(--border-subtle)',
-                  color: 'var(--text-secondary)',
-                  borderRadius: '4px',
-                  padding: '2px 8px',
-                  fontSize: '0.72rem',
-                  fontFamily: 'var(--font-tactical)',
-                  cursor: 'pointer',
-                  transition: 'all 150ms ease'
-                }}
               >
                 cloudflare.com <span style={{ color: 'var(--secondary-emerald)', fontWeight: 700 }}>(A+)</span>
               </button>
               <button
                 type="button"
+                className="target-preset-btn"
                 onClick={() => handlePreset('https://google.com')}
-                style={{
-                  background: 'var(--surface-card)',
-                  border: '1px solid var(--border-subtle)',
-                  color: 'var(--text-secondary)',
-                  borderRadius: '4px',
-                  padding: '2px 8px',
-                  fontSize: '0.72rem',
-                  fontFamily: 'var(--font-tactical)',
-                  cursor: 'pointer',
-                  transition: 'all 150ms ease'
-                }}
               >
                 google.com <span style={{ color: 'var(--primary-cyan)', fontWeight: 700 }}>(A)</span>
               </button>
               <button
                 type="button"
+                className="target-preset-btn"
                 onClick={() => handlePreset('https://legacy-internal.dev')}
-                style={{
-                  background: 'var(--surface-card)',
-                  border: '1px solid var(--border-subtle)',
-                  color: 'var(--text-secondary)',
-                  borderRadius: '4px',
-                  padding: '2px 8px',
-                  fontSize: '0.72rem',
-                  fontFamily: 'var(--font-tactical)',
-                  cursor: 'pointer',
-                  transition: 'all 150ms ease'
-                }}
               >
                 legacy-internal.dev <span style={{ color: 'var(--danger-rose)', fontWeight: 700 }}>(F)</span>
               </button>
             </div>
 
             {/* Quick Export Tools */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               {onQuickExportSarif && (
                 <button
                   type="button"
+                  className="target-preset-btn"
                   onClick={onQuickExportSarif}
-                  style={{
-                    background: 'var(--surface-high)',
-                    border: '1px solid var(--border-subtle)',
-                    color: 'var(--text-primary)',
-                    borderRadius: '4px',
-                    padding: '2px 8px',
-                    fontSize: '0.7rem',
-                    fontFamily: 'var(--font-tactical)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                    cursor: 'pointer'
-                  }}
                 >
-                  <FileCode size={11} color="var(--primary-cyan)" />
+                  <FileCode size={12} color="var(--primary-cyan)" />
                   <span>SARIF 2.1</span>
                 </button>
               )}
               {onQuickExportJson && (
                 <button
                   type="button"
+                  className="target-preset-btn"
                   onClick={onQuickExportJson}
-                  style={{
-                    background: 'var(--surface-high)',
-                    border: '1px solid var(--border-subtle)',
-                    color: 'var(--text-primary)',
-                    borderRadius: '4px',
-                    padding: '2px 8px',
-                    fontSize: '0.7rem',
-                    fontFamily: 'var(--font-tactical)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                    cursor: 'pointer'
-                  }}
                 >
-                  <Download size={11} color="var(--primary-cyan)" />
+                  <Download size={12} color="var(--primary-cyan)" />
                   <span>JSON Report</span>
                 </button>
               )}
@@ -294,93 +245,101 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
         </div>
 
         {/* 4 Feature Telemetry Bento Highlights */}
-        <div className="hero-bento-grid" style={{
+        <div className="hero-bento-grid animate-fade-in-up delay-300" style={{
           width: '100%',
-          margin: '24px auto 0 auto'
+          marginTop: '28px'
         }}>
-          <div style={{
-            background: 'var(--surface-1)',
-            border: '1px solid var(--border-subtle)',
-            borderRadius: '10px',
-            padding: '16px 20px',
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '12px'
-          }}>
-            <span style={{ padding: '8px', borderRadius: '6px', background: 'rgba(16, 185, 129, 0.15)', color: 'var(--secondary-emerald)', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
+          <div className="hero-bento-card">
+            <span style={{ 
+              padding: '8px', 
+              borderRadius: '6px', 
+              background: 'rgba(16, 185, 129, 0.14)', 
+              color: 'var(--secondary-emerald)', 
+              border: '1px solid rgba(16, 185, 129, 0.3)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0
+            }}>
               <Shield size={18} />
             </span>
             <div>
-              <div style={{ fontFamily: 'var(--font-tactical)', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+              <div style={{ fontFamily: 'var(--font-tactical)', fontSize: '0.86rem', fontWeight: 600, color: 'var(--text-primary)' }}>
                 SSRF & Abuse Protected
               </div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+              <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '3px', lineHeight: 1.45 }}>
                 RFC-1918 / Loopback blocked, DNS single-resolution, IP pinning across redirect hops.
               </div>
             </div>
           </div>
 
-          <div style={{
-            background: 'var(--surface-1)',
-            border: '1px solid var(--border-subtle)',
-            borderRadius: '10px',
-            padding: '16px 20px',
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '12px'
-          }}>
-            <span style={{ padding: '8px', borderRadius: '6px', background: 'rgba(0, 240, 255, 0.15)', color: 'var(--primary-cyan)', border: '1px solid var(--border-cyan)' }}>
+          <div className="hero-bento-card">
+            <span style={{ 
+              padding: '8px', 
+              borderRadius: '6px', 
+              background: 'rgba(0, 240, 255, 0.14)', 
+              color: 'var(--primary-cyan)', 
+              border: '1px solid var(--border-cyan)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0
+            }}>
               <Radar size={18} />
             </span>
             <div>
-              <div style={{ fontFamily: 'var(--font-tactical)', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+              <div style={{ fontFamily: 'var(--font-tactical)', fontSize: '0.86rem', fontWeight: 600, color: 'var(--text-primary)' }}>
                 Deterministic 0–100 Rubric
               </div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+              <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '3px', lineHeight: 1.45 }}>
                 Transparent letter grading (A+ to F) evaluating CSP, HSTS, XFO, XCTO, and privacy.
               </div>
             </div>
           </div>
 
-          <div style={{
-            background: 'var(--surface-1)',
-            border: '1px solid var(--border-subtle)',
-            borderRadius: '10px',
-            padding: '16px 20px',
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '12px'
-          }}>
-            <span style={{ padding: '8px', borderRadius: '6px', background: 'rgba(245, 158, 11, 0.15)', color: 'var(--tertiary-amber)', border: '1px solid rgba(245, 158, 11, 0.3)' }}>
+          <div className="hero-bento-card">
+            <span style={{ 
+              padding: '8px', 
+              borderRadius: '6px', 
+              background: 'rgba(245, 158, 11, 0.14)', 
+              color: 'var(--tertiary-amber)', 
+              border: '1px solid rgba(245, 158, 11, 0.3)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0
+            }}>
               <FileCode size={18} />
             </span>
             <div>
-              <div style={{ fontFamily: 'var(--font-tactical)', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+              <div style={{ fontFamily: 'var(--font-tactical)', fontSize: '0.86rem', fontWeight: 600, color: 'var(--text-primary)' }}>
                 6+ Stack Code Generators
               </div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+              <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '3px', lineHeight: 1.45 }}>
                 Instant copy-paste configs for Nginx, Apache 2.4, Express.js, Cloudflare, Flask/Django.
               </div>
             </div>
           </div>
 
-          <div style={{
-            background: 'var(--surface-1)',
-            border: '1px solid var(--border-subtle)',
-            borderRadius: '10px',
-            padding: '16px 20px',
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '12px'
-          }}>
-            <span style={{ padding: '8px', borderRadius: '6px', background: 'rgba(16, 185, 129, 0.15)', color: 'var(--secondary-emerald)', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
+          <div className="hero-bento-card">
+            <span style={{ 
+              padding: '8px', 
+              borderRadius: '6px', 
+              background: 'rgba(16, 185, 129, 0.14)', 
+              color: 'var(--secondary-emerald)', 
+              border: '1px solid rgba(16, 185, 129, 0.3)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0
+            }}>
               <CheckCircle2 size={18} />
             </span>
             <div>
-              <div style={{ fontFamily: 'var(--font-tactical)', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+              <div style={{ fontFamily: 'var(--font-tactical)', fontSize: '0.86rem', fontWeight: 600, color: 'var(--text-primary)' }}>
                 CI/CD SARIF 2.1 Ready
               </div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+              <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '3px', lineHeight: 1.45 }}>
                 Automate GitHub Code Scanning alerts with native SARIF output and threshold flags.
               </div>
             </div>

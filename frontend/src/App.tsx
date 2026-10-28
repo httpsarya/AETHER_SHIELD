@@ -276,19 +276,12 @@ export const App: React.FC = () => {
                 onCopyNotice={showToast}
               />
             ) : (
-              <>
-                <Hero 
-                  onScan={handleRunScan} 
-                  isLoading={isScanning}
-                  onQuickExportSarif={handleGlobalSarifExport}
-                  onQuickExportJson={handleGlobalJsonExport}
-                />
-                <HomeLandingSections
-                  onScanClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  onExploreLearn={() => setCurrentTab('learn')}
-                  onExploreFixes={() => setCurrentTab('fixes')}
-                />
-              </>
+              <Hero 
+                onScan={handleRunScan} 
+                isLoading={isScanning}
+                onQuickExportSarif={handleGlobalSarifExport}
+                onQuickExportJson={handleGlobalJsonExport}
+              />
             )}
           </>
         )}
@@ -354,11 +347,13 @@ export const App: React.FC = () => {
         )}
       </main>
 
-      {/* Footer */}
-      <Footer onSelectTab={(tab) => {
-        setCurrentTab(tab);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }} />
+      {/* Footer (Inner pages and scan results) */}
+      {(currentTab !== 'scanner' || activeScan !== null) && (
+        <Footer onSelectTab={(tab) => {
+          setCurrentTab(tab);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }} />
+      )}
     </div>
   );
 };
