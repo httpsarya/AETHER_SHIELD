@@ -30,7 +30,7 @@ export const HomeLandingSections: React.FC<HomeLandingSectionsProps> = ({
       {/* How It Works Infographic Flow */}
       <section style={{ padding: '96px 0', background: 'var(--bg-navy)', borderBottom: '1px solid var(--line)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 56px' }}>
+          <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 56px' }}>
             <h2 style={{ marginBottom: '16px' }}>
               How the <span style={{ color: 'var(--accent-magenta)' }}>Audit Engine</span> Works
             </h2>
@@ -39,11 +39,7 @@ export const HomeLandingSections: React.FC<HomeLandingSectionsProps> = ({
             </p>
           </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '20px'
-          }}>
+          <div className="engine-steps-grid">
             {[
               { step: '01', title: 'Target Validation', desc: 'SSRF guard checks IP routing, blocking private/internal IP ranges and metadata hostnames.', color: 'var(--accent-cyan)' },
               { step: '02', title: 'Async Header Fetch', desc: 'Fetches headers, follows up to 5 redirect hops, and validates IP pinning on each hop.', color: 'var(--accent-magenta)' },
@@ -51,7 +47,7 @@ export const HomeLandingSections: React.FC<HomeLandingSectionsProps> = ({
               { step: '04', title: 'Grading & Scoring', desc: 'Calculates deterministic 0-100 score and assigns letter grade (A+ to F).', color: 'var(--green-ui)' },
               { step: '05', title: 'Fix Generation', desc: 'Delivers ready-to-paste configurations for Nginx, Apache, Express, Flask, Django & Cloudflare.', color: '#A51FD7' }
             ].map((item) => (
-              <div key={item.step} className="card" style={{ padding: '24px 20px', position: 'relative' }}>
+              <div key={item.step} className="card" style={{ padding: '24px 20px', position: 'relative', display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <div style={{
                   fontFamily: 'var(--font-brand)',
                   fontSize: '2rem',
@@ -63,7 +59,7 @@ export const HomeLandingSections: React.FC<HomeLandingSectionsProps> = ({
                   {item.step}
                 </div>
                 <h4 style={{ fontSize: '1rem', marginBottom: '8px', color: '#FFFFFF' }}>{item.title}</h4>
-                <p style={{ fontSize: '0.825rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+                <p style={{ fontSize: '0.825rem', color: 'var(--text-secondary)', lineHeight: 1.5, flex: 1 }}>
                   {item.desc}
                 </p>
               </div>
@@ -75,27 +71,25 @@ export const HomeLandingSections: React.FC<HomeLandingSectionsProps> = ({
       {/* 3 Audience Cards */}
       <section style={{ padding: '96px 0', borderBottom: '1px solid var(--line)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 56px' }}>
+          <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 56px' }}>
             <h2 style={{ marginBottom: '16px' }}>Built for Modern Engineering Teams</h2>
             <p style={{ color: 'var(--text-secondary)' }}>
               Whether you are shipping microservices, learning OWASP standards, or automating CI/CD.
             </p>
           </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '28px'
-          }}>
+          <div className="audience-grid">
             {/* Developers */}
-            <div className="card" style={{ padding: '32px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                <Code size={24} color="var(--green-ui)" />
-                <h3 style={{ fontSize: '1.25rem', color: 'var(--green-ui)' }}>Web Developers</h3>
+            <div className="card" style={{ padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                  <Code size={24} color="var(--green-ui)" />
+                  <h3 style={{ fontSize: '1.25rem', color: 'var(--green-ui)' }}>Web Developers</h3>
+                </div>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>
+                  Stop guessing complex CSP syntax or HSTS parameters. Get the exact config block for your exact server stack in one click.
+                </p>
               </div>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>
-                Stop guessing complex CSP syntax or HSTS parameters. Get the exact config block for your exact server stack in one click.
-              </p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.85rem', color: 'var(--text-primary)' }}>
                 <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <CheckCircle size={14} color="var(--green-ui)" /> Instant copy-paste snippets
@@ -110,14 +104,16 @@ export const HomeLandingSections: React.FC<HomeLandingSectionsProps> = ({
             </div>
 
             {/* Students & Beginners */}
-            <div className="card" style={{ padding: '32px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                <GraduationCap size={24} color="var(--accent-cyan)" />
-                <h3 style={{ fontSize: '1.25rem', color: 'var(--accent-cyan)' }}>Security Students</h3>
+            <div className="card" style={{ padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                  <GraduationCap size={24} color="var(--accent-cyan)" />
+                  <h3 style={{ fontSize: '1.25rem', color: 'var(--accent-cyan)' }}>Security Students</h3>
+                </div>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>
+                  Learn how each header protects users from real-world attacks like XSS, Clickjacking, MIME confusion, and packet sniffing.
+                </p>
               </div>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>
-                Learn how each header protects users from real-world attacks like XSS, Clickjacking, MIME confusion, and packet sniffing.
-              </p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.85rem', color: 'var(--text-primary)' }}>
                 <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <CheckCircle size={14} color="var(--accent-cyan)" /> Plain-English explanations
@@ -132,14 +128,16 @@ export const HomeLandingSections: React.FC<HomeLandingSectionsProps> = ({
             </div>
 
             {/* DevOps / SRE */}
-            <div className="card" style={{ padding: '32px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                <Server size={24} color="var(--accent-magenta)" />
-                <h3 style={{ fontSize: '1.25rem', color: 'var(--accent-magenta)' }}>DevOps & SRE</h3>
+            <div className="card" style={{ padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                  <Server size={24} color="var(--accent-magenta)" />
+                  <h3 style={{ fontSize: '1.25rem', color: 'var(--accent-magenta)' }}>DevOps & SRE</h3>
+                </div>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>
+                  Automate compliance checks in GitHub Actions, fail builds below required security scores, and run batch audits on client domains.
+                </p>
               </div>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>
-                Automate compliance checks in GitHub Actions, fail builds below required security scores, and run batch audits on client domains.
-              </p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.85rem', color: 'var(--text-primary)' }}>
                 <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <CheckCircle size={14} color="var(--accent-magenta)" /> Standard SARIF v2.1.0 output
@@ -160,15 +158,15 @@ export const HomeLandingSections: React.FC<HomeLandingSectionsProps> = ({
       <section style={{ padding: '80px 0', background: 'var(--surface-1)', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="container">
           <div style={{
-            maxWidth: '900px',
+            maxWidth: '1240px',
             margin: '0 auto',
             background: 'var(--surface-card)',
             border: '1px solid var(--border-cyan)',
             borderRadius: '16px',
-            padding: '40px 32px',
+            padding: '48px 36px',
             boxShadow: '0 0 35px rgba(0, 240, 255, 0.12)'
           }}>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', marginBottom: '28px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', marginBottom: '32px' }}>
               <div style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -192,7 +190,7 @@ export const HomeLandingSections: React.FC<HomeLandingSectionsProps> = ({
               <p style={{ color: 'var(--secondary-emerald)', fontFamily: 'var(--font-tactical)', fontSize: '0.95rem', fontWeight: 600 }}>
                 CSE Student • Bennett University, Greater Noida, India
               </p>
-              <p style={{ color: 'var(--text-secondary)', maxWidth: '620px', fontSize: '0.9rem', marginTop: '12px', lineHeight: 1.6 }}>
+              <p style={{ color: 'var(--text-secondary)', maxWidth: '780px', fontSize: '0.9rem', marginTop: '12px', lineHeight: 1.6 }}>
                 Architect of the AETHER_SHIELD HTTP Security Header Analyzer. Designed to provide deterministic, SSRF-safe header inspection, RFC-compliant scoring, and instant server remediation configs for web engineering teams.
               </p>
             </div>
@@ -200,8 +198,8 @@ export const HomeLandingSections: React.FC<HomeLandingSectionsProps> = ({
             {/* Identity & Contact Grid */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '14px',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: '16px',
               fontFamily: 'var(--font-tactical)',
               fontSize: '0.8rem'
             }}>
@@ -295,9 +293,9 @@ export const HomeLandingSections: React.FC<HomeLandingSectionsProps> = ({
       }}>
         <div className="container">
           <div style={{
-            maxWidth: '720px',
+            maxWidth: '960px',
             margin: '0 auto',
-            padding: '48px 32px',
+            padding: '56px 40px',
             borderRadius: '16px',
             background: 'rgba(254, 1, 255, 0.04)',
             border: '1px solid rgba(254, 1, 255, 0.3)',

@@ -55,9 +55,9 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
         </div>
 
         {/* Hero Title & Subtitle */}
-        <div style={{ textAlign: 'center', maxWidth: '860px', margin: '0 auto 16px auto' }}>
+        <div style={{ textAlign: 'center', maxWidth: '1100px', margin: '0 auto 18px auto' }}>
           <h1 style={{
-            fontSize: 'clamp(1.7rem, 1.35rem + 1.2vw, 2.45rem)',
+            fontSize: 'clamp(1.75rem, 1.35rem + 1.4vw, 2.6rem)',
             fontWeight: 700,
             lineHeight: 1.25,
             marginBottom: '10px',
@@ -67,7 +67,7 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
             Deterministic HTTP Security <br />
             <span style={{ color: 'var(--primary-cyan)', textShadow: 'var(--glow-cyan)' }}>Header Inspection</span> &amp; Remediation
           </h1>
-          <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.5, maxWidth: '680px', margin: '0 auto' }}>
+          <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: 1.55, maxWidth: '820px', margin: '0 auto' }}>
             Deterministic 0–100 rubric compliance, SSRF-protected deep inspection, and instant copy-paste hardened server configurations.
           </p>
         </div>
@@ -76,26 +76,17 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
         {/* STITCH TOP CYBER SCANNER BAR                          */}
         {/* ==================================================== */}
         <div style={{
-          maxWidth: '960px',
+          width: '100%',
           margin: '0 auto',
           background: 'var(--surface-1)',
           border: inputError ? '1px solid var(--danger-rose)' : '1px solid var(--border-cyan)',
           borderRadius: '12px',
-          padding: '14px 16px',
-          boxShadow: '0 0 25px rgba(0, 240, 255, 0.12)',
+          padding: '16px 20px',
+          boxShadow: '0 0 30px rgba(0, 240, 255, 0.12)',
           backdropFilter: 'blur(16px)'
         }}>
           <form onSubmit={handleSubmit}>
-            <div style={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              background: 'var(--bg-input)',
-              border: '1px solid var(--border-subtle)',
-              borderRadius: '8px',
-              padding: '4px 10px',
-              gap: '10px'
-            }}>
+            <div className="scanner-form-row">
               {/* Terminal Prefix */}
               <span style={{
                 fontFamily: 'var(--font-tactical)',
@@ -303,12 +294,9 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
         </div>
 
         {/* 4 Feature Telemetry Bento Highlights */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-          gap: '12px',
-          maxWidth: '1100px',
-          margin: '20px auto 0 auto'
+        <div className="hero-bento-grid" style={{
+          width: '100%',
+          margin: '24px auto 0 auto'
         }}>
           <div style={{
             background: 'var(--surface-1)',
