@@ -55,17 +55,19 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
         </div>
 
         {/* Hero Title & Subtitle */}
-        <div style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 16px auto' }}>
+        <div style={{ textAlign: 'center', maxWidth: '860px', margin: '0 auto 16px auto' }}>
           <h1 style={{
-            fontSize: 'clamp(1.5rem, 1.25rem + 1.2vw, 2.25rem)',
+            fontSize: 'clamp(1.7rem, 1.35rem + 1.2vw, 2.45rem)',
             fontWeight: 700,
-            lineHeight: 1.2,
-            marginBottom: '8px',
-            letterSpacing: '-0.02em'
+            lineHeight: 1.25,
+            marginBottom: '10px',
+            letterSpacing: '-0.02em',
+            textWrap: 'balance'
           }}>
-            Deterministic HTTP Security <span style={{ color: 'var(--primary-cyan)', textShadow: 'var(--glow-cyan)' }}>Header Inspection</span> & Remediation
+            Deterministic HTTP Security <br />
+            <span style={{ color: 'var(--primary-cyan)', textShadow: 'var(--glow-cyan)' }}>Header Inspection</span> &amp; Remediation
           </h1>
-          <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.45, maxWidth: '680px', margin: '0 auto' }}>
+          <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.5, maxWidth: '680px', margin: '0 auto' }}>
             Deterministic 0–100 rubric compliance, SSRF-protected deep inspection, and instant copy-paste hardened server configurations.
           </p>
         </div>
@@ -79,7 +81,7 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
           background: 'var(--surface-1)',
           border: inputError ? '1px solid var(--danger-rose)' : '1px solid var(--border-cyan)',
           borderRadius: '12px',
-          padding: '12px 14px',
+          padding: '14px 16px',
           boxShadow: '0 0 25px rgba(0, 240, 255, 0.12)',
           backdropFilter: 'blur(16px)'
         }}>
@@ -91,18 +93,18 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
               background: 'var(--bg-input)',
               border: '1px solid var(--border-subtle)',
               borderRadius: '8px',
-              padding: '4px 8px',
-              gap: '8px',
-              flexWrap: 'wrap'
+              padding: '4px 10px',
+              gap: '10px'
             }}>
               {/* Terminal Prefix */}
               <span style={{
                 fontFamily: 'var(--font-tactical)',
-                fontSize: '0.85rem',
+                fontSize: '0.88rem',
                 color: 'var(--primary-cyan)',
                 fontWeight: 700,
                 paddingLeft: '4px',
-                userSelect: 'none'
+                userSelect: 'none',
+                whiteSpace: 'nowrap'
               }}>
                 target://
               </span>
@@ -116,70 +118,17 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
                 disabled={isLoading}
                 style={{
                   flex: 1,
-                  minWidth: '200px',
                   background: 'transparent',
                   border: 'none',
                   color: 'var(--text-primary)',
                   fontFamily: 'var(--font-tactical)',
-                  fontSize: '0.9rem',
+                  fontSize: '0.92rem',
                   outline: 'none',
-                  height: '36px'
+                  height: '40px',
+                  padding: '0 6px',
+                  minWidth: 0
                 }}
               />
-
-              {/* Integrated Status Badges inside the scanner bar */}
-              <div style={{
-                display: 'none',
-                alignItems: 'center',
-                gap: '6px',
-                borderLeft: '1px solid var(--border-subtle)',
-                paddingLeft: '10px'
-              }} className="scanner-pills">
-                <style>{`
-                  @media (min-width: 768px) {
-                    .scanner-pills { display: flex !important; }
-                  }
-                `}</style>
-                <span style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  fontSize: '0.68rem',
-                  fontFamily: 'var(--font-tactical)',
-                  color: 'var(--secondary-emerald)',
-                  background: 'rgba(16, 185, 129, 0.15)',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
-                  padding: '2px 7px',
-                  borderRadius: '4px'
-                }}>
-                  <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: 'var(--secondary-emerald)' }}></span>
-                  TLS 1.3 STRICT
-                </span>
-
-                <span style={{
-                  fontSize: '0.68rem',
-                  fontFamily: 'var(--font-tactical)',
-                  color: 'var(--text-muted)',
-                  background: 'var(--surface-high)',
-                  border: '1px solid var(--border-subtle)',
-                  padding: '2px 7px',
-                  borderRadius: '4px'
-                }}>
-                  184ms
-                </span>
-
-                <span style={{
-                  fontSize: '0.68rem',
-                  fontFamily: 'var(--font-tactical)',
-                  color: 'var(--secondary-emerald)',
-                  background: 'rgba(16, 185, 129, 0.12)',
-                  border: '1px solid rgba(16, 185, 129, 0.25)',
-                  padding: '2px 7px',
-                  borderRadius: '4px'
-                }}>
-                  HTTP/2 200 OK
-                </span>
-              </div>
 
               {/* Primary Analyze Headers Button */}
               <button
@@ -187,10 +136,12 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
                 disabled={isLoading}
                 className="btn-primary"
                 style={{
-                  height: '38px',
-                  padding: '0 18px',
+                  height: '40px',
+                  padding: '0 22px',
                   borderRadius: '6px',
-                  fontSize: '0.82rem'
+                  fontSize: '0.82rem',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0
                 }}
               >
                 {isLoading ? (
