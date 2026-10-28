@@ -67,7 +67,7 @@
   --font-brand: "JetBrains Mono", "Inter", sans-serif;
 
   /* Spacing & Widths */
-  --container: 1560px;
+  --container: 100%;
   --nav-h: 58px;
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -78,37 +78,68 @@
 }
 
 /* Base Styles */
-* {
-  box-sizing: border-box;
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
-/* Container & Full-Width Layout */
-.container {
-  width: 94%;
-  max-width: var(--container);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: clamp(14px, 2.5vw, 36px);
-  padding-right: clamp(14px, 2.5vw, 36px);
+* {
+  box-sizing: border-box;
+}
+
+/* Global Full-Width Layout */
+.container,
+.main-container,
+.container-fluid {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: clamp(16px, 2.5vw, 48px) !important;
+  padding-right: clamp(16px, 2.5vw, 48px) !important;
 }
 
 @media (max-width: 640px) {
-  .container {
-    width: 100%;
-    padding-left: 14px;
-    padding-right: 14px;
+  .container,
+  .main-container,
+  .container-fluid {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 }
 
-.container-fluid {
-  width: 96%;
-  max-width: 1680px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: clamp(12px, 2vw, 32px);
-  padding-right: clamp(12px, 2vw, 32px);
+/* Scan Results Executive Overview Bento Grid */
+.scan-overview-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 20px;
+  margin-bottom: 32px;
+  width: 100%;
+  align-items: stretch;
+}
+
+.scan-vectors-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .scan-overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .scan-vectors-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Responsive Component Grids */

@@ -158,7 +158,7 @@ export const HomeLandingSections: React.FC<HomeLandingSectionsProps> = ({
       <section style={{ padding: '80px 0', background: 'var(--surface-1)', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="container">
           <div style={{
-            maxWidth: '1240px',
+            width: '100%',
             margin: '0 auto',
             background: 'var(--surface-card)',
             border: '1px solid var(--border-cyan)',
@@ -293,7 +293,7 @@ export const HomeLandingSections: React.FC<HomeLandingSectionsProps> = ({
       }}>
         <div className="container">
           <div style={{
-            maxWidth: '960px',
+            width: '100%',
             margin: '0 auto',
             padding: '56px 40px',
             borderRadius: '16px',

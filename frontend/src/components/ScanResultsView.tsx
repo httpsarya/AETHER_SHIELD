@@ -327,12 +327,7 @@ CSP_BASE_URI = ("'self'",)`;
         {/* ==================================================== */}
         {/* SECTION 2: EXECUTIVE TELEMETRY OVERVIEW (BENTO GRID) */}
         {/* ==================================================== */}
-        <section style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '20px',
-          marginBottom: '32px'
-        }}>
+        <section className="scan-overview-grid">
           {/* Big Animated Grade Card (Bento Left) */}
           <div style={{
             background: 'var(--surface-1)',
@@ -363,11 +358,7 @@ CSP_BASE_URI = ("'self'",)`;
           </div>
 
           {/* 4 Metric Bento Cards (Bento Right 2x2) */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-            gap: '16px'
-          }}>
+          <div className="scan-vectors-grid">
             {/* Stat 1: SSRF Protection */}
             <div style={{
               background: 'var(--surface-1)',

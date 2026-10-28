@@ -160,14 +160,15 @@ console.log(\`Grade: \${result.grade}, Score: \${result.score}/100\`);`;
                 background: 'rgba(255, 255, 255, 0.02)',
                 border: '1px solid var(--line)',
                 borderRadius: '6px',
-                padding: '12px 16px',
+                padding: '14px 20px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 flexWrap: 'wrap',
-                gap: '12px'
+                gap: '16px',
+                width: '100%'
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                   <span style={{
                     fontFamily: 'var(--font-mono)',
                     fontSize: '0.75rem',
@@ -180,11 +181,11 @@ console.log(\`Grade: \${result.grade}, Score: \${result.score}/100\`);`;
                   }}>
                     {ep.method}
                   </span>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.9rem', color: '#FFFFFF' }}>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.92rem', color: '#FFFFFF', fontWeight: 600 }}>
                     {ep.path}
                   </span>
                 </div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', maxWidth: '480px' }}>
+                <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', flex: 1, minWidth: '280px', textAlign: 'right' }}>
                   {ep.desc}
                 </div>
               </div>
