@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Shield, Sparkles, Radar, CheckCircle2, Download, FileCode, RefreshCw } from 'lucide-react';
+import { Shield, Sparkles, Radar, CheckCircle2, Download, FileCode, RefreshCw, ChevronDown } from 'lucide-react';
 
 interface HeroProps {
   onScan: (url: string, followRedirects: boolean) => void;
@@ -344,6 +344,18 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Subtle Classy Scroll Indicator to Explore Architecture & Specs */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '28px' }}>
+          <a
+            href="#engine-overview"
+            className="hero-scroll-btn"
+            title="Scroll to explore audit engine architecture & specifications"
+          >
+            <ChevronDown size={14} className="animate-bounce" color="var(--primary-cyan)" />
+            <span>SCROLL TO EXPLORE ARCHITECTURE &amp; SPECIFICATIONS</span>
+          </a>
         </div>
       </div>
     </section>

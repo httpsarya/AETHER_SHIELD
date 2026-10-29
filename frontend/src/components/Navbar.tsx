@@ -119,50 +119,22 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        {/* Desktop Navigation Links */}
-        <nav style={{ display: 'none', gap: '20px', alignItems: 'center' }} className="desktop-nav">
-          <style>{`
-            @media (min-width: 900px) {
-              .desktop-nav { display: flex !important; }
-              .mobile-toggle { display: none !important; }
-            }
-          `}</style>
+        {/* Desktop Navigation Segmented Pill Strip */}
+        <nav className="desktop-nav-strip" aria-label="Main Navigation">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = currentTab === item.id;
             return (
               <button
                 key={item.id}
+                type="button"
                 onClick={() => handleNavClick(item.id)}
-                style={{
-                  background: 'transparent',
-                  border: 'none',
-                  color: isActive ? 'var(--primary-cyan)' : 'var(--text-secondary)',
-                  fontSize: '0.8rem',
-                  fontFamily: 'var(--font-tactical)',
-                  fontWeight: isActive ? 600 : 500,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '5px',
-                  cursor: 'pointer',
-                  position: 'relative',
-                  padding: '6px 2px',
-                  transition: 'all 150ms ease'
-                }}
+                className={`nav-tab-btn ${isActive ? 'active' : ''}`}
+                title={item.label}
               >
-                <Icon size={14} color={isActive ? 'var(--primary-cyan)' : 'currentColor'} />
+                <Icon size={13} color={isActive ? 'var(--primary-cyan)' : 'currentColor'} />
                 <span>{item.label}</span>
-                {isActive && (
-                  <span style={{
-                    position: 'absolute',
-                    bottom: '-12px',
-                    left: 0,
-                    right: 0,
-                    height: '2px',
-                    background: 'var(--primary-cyan)',
-                    boxShadow: '0 0 8px var(--primary-cyan)'
-                  }} />
-                )}
+                {isActive && <span className="nav-tab-glow-indicator" />}
               </button>
             );
           })}
@@ -185,7 +157,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="nav-export-sarif"
             >
               <style>{`
-                @media (min-width: 640px) {
+                @media (min-width: 720px) {
                   #nav-export-sarif { display: inline-flex !important; }
                 }
               `}</style>
@@ -199,8 +171,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={onQuickScanClick}
             className="btn-primary"
             style={{
-              height: '36px',
-              padding: '0 16px',
+              height: '34px',
+              padding: '0 15px',
               fontSize: '0.78rem',
               fontFamily: 'var(--font-tactical)'
             }}
@@ -217,13 +189,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             style={{
               background: 'transparent',
               border: '1px solid var(--border-subtle)',
-              borderRadius: '4px',
+              borderRadius: '6px',
               color: 'var(--text-primary)',
               padding: '6px',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
             }}
+            aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
@@ -237,33 +213,37 @@ export const Navbar: React.FC<NavbarProps> = ({
           right: 0,
           background: 'var(--surface-1)',
           borderBottom: '1px solid var(--border-cyan)',
-          padding: '16px 24px',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.8)'
+          padding: '16px 20px',
+          boxShadow: '0 12px 36px rgba(0,0,0,0.85)',
+          backdropFilter: 'blur(20px)',
+          zIndex: 100
         }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '8px' }}>
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = currentTab === item.id;
               return (
                 <button
                   key={item.id}
+                  type="button"
                   onClick={() => handleNavClick(item.id)}
                   style={{
-                    background: isActive ? 'rgba(0, 240, 255, 0.12)' : 'transparent',
-                    border: 'none',
-                    borderRadius: '4px',
+                    background: isActive ? 'rgba(0, 240, 255, 0.12)' : 'var(--surface-card)',
+                    border: isActive ? '1px solid var(--border-cyan)' : '1px solid var(--border-subtle)',
+                    borderRadius: '6px',
                     color: isActive ? 'var(--primary-cyan)' : 'var(--text-secondary)',
-                    fontSize: '0.85rem',
+                    fontSize: '0.78rem',
                     fontFamily: 'var(--font-tactical)',
                     padding: '8px 12px',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '10px',
+                    gap: '8px',
                     cursor: 'pointer',
-                    textAlign: 'left'
+                    textAlign: 'left',
+                    transition: 'all 150ms ease'
                   }}
                 >
-                  <Icon size={16} color={isActive ? 'var(--primary-cyan)' : 'currentColor'} />
+                  <Icon size={14} color={isActive ? 'var(--primary-cyan)' : 'currentColor'} />
                   <span>{item.label}</span>
                 </button>
               );

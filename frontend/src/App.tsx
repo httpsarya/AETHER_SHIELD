@@ -67,6 +67,7 @@ export const App: React.FC = () => {
     setIsScanning(true);
     setScanError(null);
     setScanProgressStep('Validating DNS & checking SSRF IP protections...');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     const stepTimer1 = setTimeout(() => {
       setScanProgressStep('Connecting to target & capturing HTTP response headers...');
@@ -276,12 +277,25 @@ export const App: React.FC = () => {
                 onCopyNotice={showToast}
               />
             ) : (
-              <Hero 
-                onScan={handleRunScan} 
-                isLoading={isScanning}
-                onQuickExportSarif={handleGlobalSarifExport}
-                onQuickExportJson={handleGlobalJsonExport}
-              />
+              <>
+                <Hero 
+                  onScan={handleRunScan} 
+                  isLoading={isScanning}
+                  onQuickExportSarif={handleGlobalSarifExport}
+                  onQuickExportJson={handleGlobalJsonExport}
+                />
+                <HomeLandingSections
+                  onScanClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  onExploreLearn={() => {
+                    setCurrentTab('learn');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  onExploreFixes={() => {
+                    setCurrentTab('fixes');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                />
+              </>
             )}
           </>
         )}
@@ -347,13 +361,11 @@ export const App: React.FC = () => {
         )}
       </main>
 
-      {/* Footer (Inner pages and scan results) */}
-      {(currentTab !== 'scanner' || activeScan !== null) && (
-        <Footer onSelectTab={(tab) => {
-          setCurrentTab(tab);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }} />
-      )}
+      {/* Global Sec-Ops Cockpit Footer */}
+      <Footer onSelectTab={(tab) => {
+        setCurrentTab(tab);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }} />
     </div>
   );
 };

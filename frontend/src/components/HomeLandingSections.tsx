@@ -28,24 +28,32 @@ export const HomeLandingSections: React.FC<HomeLandingSectionsProps> = ({
   return (
     <div>
       {/* How It Works Infographic Flow */}
-      <section style={{ padding: '96px 0', background: 'var(--bg-navy)', borderBottom: '1px solid var(--line)' }}>
+      <section 
+        id="engine-overview" 
+        style={{ 
+          padding: '80px 0', 
+          background: 'var(--surface-0)', 
+          borderBottom: '1px solid var(--border-subtle)',
+          scrollMarginTop: 'calc(var(--nav-h) + 16px)'
+        }}
+      >
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 56px' }}>
-            <h2 style={{ marginBottom: '16px' }}>
-              How the <span style={{ color: 'var(--accent-magenta)' }}>Audit Engine</span> Works
+          <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 48px' }}>
+            <h2 style={{ marginBottom: '16px', fontSize: 'clamp(1.75rem, 1.4rem + 1.2vw, 2.4rem)' }}>
+              How the <span className="neon-glow-text">Audit Engine</span> Works
             </h2>
-            <p style={{ color: 'var(--text-secondary)' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
               From initial request to verified fix snippet in 5 deterministic, automated steps.
             </p>
           </div>
 
           <div className="engine-steps-grid">
             {[
-              { step: '01', title: 'Target Validation', desc: 'SSRF guard checks IP routing, blocking private/internal IP ranges and metadata hostnames.', color: 'var(--accent-cyan)' },
-              { step: '02', title: 'Async Header Fetch', desc: 'Fetches headers, follows up to 5 redirect hops, and validates IP pinning on each hop.', color: 'var(--accent-magenta)' },
-              { step: '03', title: 'Rule Evaluation', desc: 'Evaluates CSP directives, HSTS max-age, framing protections, and information leakage.', color: 'var(--warn-amber)' },
-              { step: '04', title: 'Grading & Scoring', desc: 'Calculates deterministic 0-100 score and assigns letter grade (A+ to F).', color: 'var(--green-ui)' },
-              { step: '05', title: 'Fix Generation', desc: 'Delivers ready-to-paste configurations for Nginx, Apache, Express, Flask, Django & Cloudflare.', color: '#A51FD7' }
+              { step: '01', title: 'Target Validation', desc: 'SSRF guard checks IP routing, blocking private/internal IP ranges and metadata hostnames.', color: 'var(--primary-cyan)' },
+              { step: '02', title: 'Async Header Fetch', desc: 'Fetches headers, follows up to 5 redirect hops, and validates IP pinning on each hop.', color: 'var(--secondary-emerald)' },
+              { step: '03', title: 'Rule Evaluation', desc: 'Evaluates CSP directives, HSTS max-age, framing protections, and information leakage.', color: 'var(--tertiary-amber)' },
+              { step: '04', title: 'Grading & Scoring', desc: 'Calculates deterministic 0-100 score and assigns letter grade (A+ to F).', color: 'var(--primary-cyan)' },
+              { step: '05', title: 'Fix Generation', desc: 'Delivers ready-to-paste configurations for Nginx, Apache, Express, Flask, Django & Cloudflare.', color: 'var(--secondary-emerald)' }
             ].map((item) => (
               <div key={item.step} className="card" style={{ padding: '24px 20px', position: 'relative', display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <div style={{
@@ -297,9 +305,9 @@ export const HomeLandingSections: React.FC<HomeLandingSectionsProps> = ({
             margin: '0 auto',
             padding: '56px 40px',
             borderRadius: '16px',
-            background: 'rgba(254, 1, 255, 0.04)',
-            border: '1px solid rgba(254, 1, 255, 0.3)',
-            boxShadow: '0 0 40px rgba(254, 1, 255, 0.15)'
+            background: 'var(--surface-1)',
+            border: '1px solid var(--border-cyan)',
+            boxShadow: '0 0 35px rgba(0, 240, 255, 0.12)'
           }}>
             <h2 style={{ fontSize: '2rem', marginBottom: '16px' }}>
               Ready to harden your website?
