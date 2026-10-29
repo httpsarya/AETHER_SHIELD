@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Github, Linkedin, Mail, Phone, MapPin, GraduationCap, ExternalLink, Globe, Heart } from 'lucide-react';
+import { Shield, Github, Linkedin, Mail, Phone, MapPin, GraduationCap, ExternalLink, Globe, Heart, FileText } from 'lucide-react';
 
 interface FooterProps {
   onSelectTab: (tab: string) => void;
@@ -233,6 +233,17 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
                   <Linkedin size={14} />
                   <span>LinkedIn Profile</span>
                   <ExternalLink size={12} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="AETHER_SHIELD_Project_Documentation_Viva_Guide.pdf"
+                  download="AETHER_SHIELD_Project_Documentation_Viva_Guide.pdf"
+                  style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--secondary-emerald)', fontWeight: 600 }}
+                  title="Download Viva Defense Guide & Technical Documentation PDF"
+                >
+                  <FileText size={14} />
+                  <span>Viva Guide (PDF)</span>
                 </a>
               </li>
               <li>

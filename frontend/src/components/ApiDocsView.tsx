@@ -87,13 +87,22 @@ console.log(\`Grade: \${result.grade}, Score: \${result.score}/100\`);`;
             Integrate security header audits into your CI pipelines, monitoring scripts, and infrastructure deployment pipelines.
           </p>
 
-          <div style={{ marginTop: '20px' }}>
+          <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
+            <a
+              href="AETHER_SHIELD_Project_Documentation_Viva_Guide.pdf"
+              download="AETHER_SHIELD_Project_Documentation_Viva_Guide.pdf"
+              className="btn-primary"
+              style={{ fontSize: '0.85rem', height: '42px', padding: '0 20px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+            >
+              <FileText size={16} />
+              <span>Download Viva Defense Guide (PDF)</span>
+            </a>
             <a
               href="http://localhost:8000/api/docs"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
-              style={{ fontSize: '0.875rem', height: '42px', padding: '0 20px' }}
+              className="btn-secondary"
+              style={{ fontSize: '0.85rem', height: '42px', padding: '0 20px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
             >
               <span>Interactive Swagger UI</span>
               <ExternalLink size={16} />
