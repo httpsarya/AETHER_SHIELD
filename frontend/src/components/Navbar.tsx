@@ -100,12 +100,15 @@ export const Navbar: React.FC<NavbarProps> = ({
             fontFamily: 'var(--font-tactical)'
           }} className="scope-pill">
             <style>{`
-              @media (min-width: 1080px) {
+              @media (min-width: 1360px) {
                 .scope-pill { display: flex !important; }
               }
             `}</style>
             <span style={{ color: 'var(--text-muted)' }}>scope:</span>
-            <span style={{ color: 'var(--secondary-emerald)', fontWeight: 600 }}>PRODUCTION_VPC</span>
+            <span style={{ color: 'var(--secondary-emerald)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <span className="cyber-pill-dot" style={{ backgroundColor: 'var(--secondary-emerald)', boxShadow: '0 0 8px var(--secondary-emerald)', width: '6px', height: '6px' }} />
+              PRODUCTION_VPC
+            </span>
             <span style={{
               fontSize: '0.65rem',
               padding: '1px 5px',

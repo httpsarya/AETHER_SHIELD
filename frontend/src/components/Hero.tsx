@@ -67,23 +67,28 @@ export const Hero: React.FC<HeroProps> = ({ onScan, isLoading, onQuickExportSari
         </div>
 
         {/* Hero Title & Subtitle */}
-        <div className="animate-fade-in-up delay-100" style={{ textAlign: 'center', maxWidth: '1100px', margin: '0 auto 24px auto' }}>
+        <div className="animate-fade-in-up delay-100" style={{ textAlign: 'center', maxWidth: '1100px', margin: '0 auto 22px auto' }}>
           <h1 style={{
-            fontSize: 'clamp(2.1rem, 1.7rem + 1.8vw, 3.1rem)',
+            fontSize: 'clamp(1.9rem, 1.45rem + 1.8vw, 2.95rem)',
             fontWeight: 700,
             lineHeight: 1.22,
             marginBottom: '12px',
             letterSpacing: '-0.025em',
             textWrap: 'balance'
           }}>
-            Deterministic HTTP Security <br />
-            <span className="neon-glow-text">Header Inspection</span> &amp; Remediation
+            <span style={{
+              background: 'linear-gradient(180deg, #FFFFFF 0%, #CBD5E1 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              display: 'inline-block'
+            }}>Deterministic HTTP Security</span> <br />
+            <span className="neon-glow-text">Header Inspection</span> <span style={{ color: '#F8FAFC' }}>&amp; Remediation</span>
           </h1>
           <p style={{ 
-            fontSize: 'clamp(0.92rem, 0.85rem + 0.25vw, 1.05rem)', 
+            fontSize: 'clamp(0.9rem, 0.82rem + 0.25vw, 1.02rem)', 
             color: 'var(--text-secondary)', 
-            lineHeight: 1.55, 
-            maxWidth: '820px', 
+            lineHeight: 1.58, 
+            maxWidth: '780px', 
             margin: '0 auto' 
           }}>
             Deterministic 0–100 rubric compliance, SSRF-protected deep inspection, and instant copy-paste hardened server configurations.
